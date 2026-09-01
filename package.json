@@ -1,0 +1,9 @@
+{
+  "name": "elijah-portfolio",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@vercel/blob": "^0.27.0"
+  }
+}

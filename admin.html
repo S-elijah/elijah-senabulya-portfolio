@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Elijah Senabulya</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0E1B38; --navy-2:#16264A; --sky:#2F9FE8; --sky-bright:#56B8FF;
+    --purple:#6C4FC7; --ink:#131B2C; --muted:#68707E; --border:#E6E8EC;
+    --bg:#FFFFFF; --bg-soft:#F5F7FA; --danger:#D64545;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg-soft); color:var(--ink); font-family:'Plus Jakarta Sans', sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:900px; margin:0 auto; padding:0 24px;}
+  header{background:var(--navy); color:#fff; padding:28px 0;}
+  header .wrap{display:flex; justify-content:space-between; align-items:center;}
+  header h1{font-size:19px; font-weight:800;}
+  header a.site-link{font-size:13px; font-weight:700; color:var(--sky-bright);}
+
+  /* LOGIN */
+  .login-box{max-width:380px; margin:100px auto; background:#fff; border:1px solid var(--border); border-radius:18px; padding:36px; text-align:center;}
+  .login-box h2{font-size:20px; margin-bottom:8px;}
+  .login-box p{color:var(--muted); font-size:13.5px; margin-bottom:22px;}
+  input[type="password"], input[type="text"], input[type="url"], input[type="date"], textarea, select{
+    width:100%; padding:12px 14px; border:1px solid var(--border); border-radius:10px;
+    font-family:inherit; font-size:14px; margin-bottom:14px; background:#fff; color:var(--ink);
+  }
+  textarea{min-height:100px; resize:vertical;}
+  label{display:block; font-size:12.5px; font-weight:700; color:var(--navy); margin-bottom:6px; text-transform:uppercase; letter-spacing:.04em;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:6px;
+    background:var(--sky); color:#fff; border:none; padding:12px 22px; border-radius:999px;
+    font-weight:700; font-size:13.5px; cursor:pointer; transition:background .2s;
+  }
+  .btn:hover{background:var(--sky-bright);}
+  .btn.full{width:100%;}
+  .btn.danger{background:var(--danger);}
+  .btn.danger:hover{background:#B93636;}
+  .btn.ghost{background:#fff; color:var(--navy); border:1px solid var(--border);}
+  .msg{font-size:13px; margin-top:10px; font-weight:600;}
+  .msg.error{color:var(--danger);}
+  .msg.ok{color:#1E8E5A;}
+
+  /* APP */
+  #app{display:none;}
+  .tabs-row{display:flex; gap:10px; margin:32px 0 24px;}
+  .tab-btn{padding:11px 22px; border-radius:999px; border:1px solid var(--border); background:#fff; font-weight:700; font-size:13.5px; cursor:pointer; color:var(--muted);}
+  .tab-btn.active{background:var(--navy); color:#fff; border-color:var(--navy);}
+  .panel{display:none;}
+  .panel.active{display:block;}
+
+  .form-card{background:#fff; border:1px solid var(--border); border-radius:16px; padding:24px; margin-bottom:28px;}
+  .form-card h3{font-size:15px; margin-bottom:16px;}
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .checkline{display:flex; align-items:center; gap:8px; margin-bottom:14px; font-size:13.5px; font-weight:600;}
+  .checkline input{width:auto; margin:0;}
+
+  .item-list{display:flex; flex-direction:column; gap:10px;}
+  .item-row{
+    background:#fff; border:1px solid var(--border); border-radius:12px; padding:16px 18px;
+    display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap;
+  }
+  .item-row .info b{display:block; font-size:14.5px;}
+  .item-row .info span{font-size:12.5px; color:var(--muted);}
+  .item-actions{display:flex; gap:8px;}
+  .item-actions button{
+    border:none; background:var(--bg-soft); padding:8px 14px; border-radius:8px; font-size:12.5px; font-weight:700; cursor:pointer;
+  }
+  .item-actions button.del{color:var(--danger);}
+  .item-actions button.edit{color:var(--sky);}
+  footer{text-align:center; padding:40px 0; color:var(--muted); font-size:12.5px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Site Admin</h1>
+    <a href="index.html" class="site-link">← View live site</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="login-box" id="loginBox">
+    <h2>Enter Admin Password</h2>
+    <p>This unlocks project and blog management for this browser session.</p>
+    <input type="password" id="passInput" placeholder="Password">
+    <button class="btn full" id="loginBtn">Unlock</button>
+    <div class="msg error" id="loginMsg"></div>
+  </div>
+
+  <div id="app">
+    <div class="tabs-row">
+      <button class="tab-btn active" data-panel="projectsPanel">Projects</button>
+      <button class="tab-btn" data-panel="postsPanel">Blog Posts</button>
+    </div>
+
+    <!-- PROJECTS PANEL -->
+    <div class="panel active" id="projectsPanel">
+      <div class="form-card">
+        <h3 id="projectFormTitle">Add New Project</h3>
+        <input type="hidden" id="projectId">
+        <div class="row2">
+          <div>
+            <label>Title</label>
+            <input type="text" id="pTitle" placeholder="Project name">
+          </div>
+          <div>
+            <label>Type</label>
+            <select id="pType">
+              <option value="open">Open Source</option>
+              <option value="client">Client Work</option>
+            </select>
+          </div>
+        </div>
+        <label>Description</label>
+        <textarea id="pDescription" placeholder="One or two sentences about it"></textarea>
+        <div class="row2">
+          <div>
+            <label>Meta line (e.g. "Python · CLI")</label>
+            <input type="text" id="pMeta" placeholder="Tech stack or role">
+          </div>
+          <div>
+            <label>Meta line 2 (client work only, e.g. year)</label>
+            <input type="text" id="pMeta2" placeholder="2026">
+          </div>
+        </div>
+        <label>Link (leave blank for client work with no public link)</label>
+        <input type="url" id="pLink" placeholder="https://github.com/...">
+        <button class="btn" id="saveProjectBtn">Save Project</button>
+        <button class="btn ghost" id="cancelProjectEdit" style="display:none;">Cancel Edit</button>
+        <div class="msg" id="projectMsg"></div>
+      </div>
+      <div class="item-list" id="projectList"></div>
+    </div>
+
+    <!-- POSTS PANEL -->
+    <div class="panel" id="postsPanel">
+      <div class="form-card">
+        <h3 id="postFormTitle">Add New Post</h3>
+        <input type="hidden" id="postOriginalSlug">
+        <div class="row2">
+          <div>
+            <label>Title</label>
+            <input type="text" id="postTitle" placeholder="Post title">
+          </div>
+          <div>
+            <label>Slug (unique, no spaces)</label>
+            <input type="text" id="postSlug" placeholder="my-post-slug">
+          </div>
+        </div>
+        <div class="row2">
+          <div>
+            <label>Tag</label>
+            <input type="text" id="postTag" placeholder="Legal Tech">
+          </div>
+          <div>
+            <label>Date</label>
+            <input type="date" id="postDate">
+          </div>
+        </div>
+        <label>Excerpt (short preview shown on the card)</label>
+        <textarea id="postExcerpt" placeholder="One or two sentences"></textarea>
+        <label>Full content (separate paragraphs with a blank line)</label>
+        <textarea id="postContent" style="min-height:180px;" placeholder="Write the full post here..."></textarea>
+        <button class="btn" id="savePostBtn">Save Post</button>
+        <button class="btn ghost" id="cancelPostEdit" style="display:none;">Cancel Edit</button>
+        <div class="msg" id="postMsg"></div>
+      </div>
+      <div class="item-list" id="postList"></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>Admin panel — not linked from the public site.</footer>
+
+<script>
+  const loginBox = document.getElementById('loginBox');
+  const app = document.getElementById('app');
+  const passInput = document.getElementById('passInput');
+  const loginBtn = document.getElementById('loginBtn');
+  const loginMsg = document.getElementById('loginMsg');
+
+  function getPass(){ return sessionStorage.getItem('adminPass') || ''; }
+
+  async function tryUnlock(pass){
+    try{
+      const r = await fetch('/api/verify', { headers: { 'x-admin-password': pass } });
+      if(r.ok){
+        sessionStorage.setItem('adminPass', pass);
+        loginBox.style.display = 'none';
+        app.style.display = 'block';
+        loadProjects();
+        loadPosts();
+      } else {
+        loginMsg.textContent = 'Incorrect password.';
+      }
+    } catch(e){
+      loginMsg.textContent = 'Could not reach server. Is ADMIN_PASSWORD set and KV connected?';
+    }
+  }
+
+  loginBtn.addEventListener('click', () => tryUnlock(passInput.value));
+  passInput.addEventListener('keydown', (e) => { if(e.key === 'Enter') tryUnlock(passInput.value); });
+
+  // auto-unlock if session already verified
+  if(getPass()) tryUnlock(getPass());
+
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.panel).classList.add('active');
+    });
+  });
+
+  // ---------- PROJECTS ----------
+  const projectList = document.getElementById('projectList');
+  const projectMsg = document.getElementById('projectMsg');
+
+  async function loadProjects(){
+    const r = await fetch('/api/projects');
+    const items = await r.json();
+    if(!items.length){ projectList.innerHTML = '<p style="color:var(--muted); font-size:13.5px;">No projects yet.</p>'; return; }
+    projectList.innerHTML = items.map(p => `
+      <div class="item-row">
+        <div class="info">
+          <b>${p.title}</b>
+          <span>${p.type === 'client' ? 'Client Work' : 'Open Source'} · ${p.meta || ''}</span>
+        </div>
+        <div class="item-actions">
+          <button class="edit" onclick='editProject(${JSON.stringify(p).replace(/'/g,"&apos;")})'>Edit</button>
+          <button class="del" data-id="${p.id}">Delete</button>
+        </div>
+      </div>
+    `).join('');
+    projectList.querySelectorAll('.del').forEach(btn => {
+      btn.addEventListener('click', () => deleteProject(btn.dataset.id));
+    });
+  }
+
+  function editProject(p){
+    document.getElementById('projectFormTitle').textContent = 'Edit Project';
+    document.getElementById('projectId').value = p.id;
+    document.getElementById('pTitle').value = p.title;
+    document.getElementById('pType').value = p.type;
+    document.getElementById('pDescription').value = p.description;
+    document.getElementById('pMeta').value = p.meta || '';
+    document.getElementById('pMeta2').value = p.meta2 || '';
+    document.getElementById('pLink').value = p.link || '';
+    document.getElementById('cancelProjectEdit').style.display = 'inline-flex';
+  }
+
+  document.getElementById('cancelProjectEdit').addEventListener('click', () => {
+    document.getElementById('projectFormTitle').textContent = 'Add New Project';
+    document.getElementById('projectId').value = '';
+    ['pTitle','pDescription','pMeta','pMeta2','pLink'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('cancelProjectEdit').style.display = 'none';
+  });
+
+  document.getElementById('saveProjectBtn').addEventListener('click', async () => {
+    const id = document.getElementById('projectId').value;
+    const type = document.getElementById('pType').value;
+    const title = document.getElementById('pTitle').value.trim();
+    const description = document.getElementById('pDescription').value.trim();
+    const meta = document.getElementById('pMeta').value.trim();
+    const meta2 = document.getElementById('pMeta2').value.trim();
+    const link = document.getElementById('pLink').value.trim();
+
+    if(!title || !description){ projectMsg.className = 'msg error'; projectMsg.textContent = 'Title and description are required.'; return; }
+
+    const payload = {
+      type, title, description, meta,
+      badge: type === 'client' ? 'Client Work' : 'Open Source',
+      purple: type === 'client',
+      mediaLabel: title,
+      link: link || undefined,
+      linkText: link ? 'View →' : undefined,
+      meta2: type === 'client' ? meta2 : undefined,
+    };
+
+    const opts = {
+      method: id ? 'PUT' : 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-admin-password': getPass() },
+      body: JSON.stringify(id ? { id, ...payload } : payload),
+    };
+    const r = await fetch('/api/projects', opts);
+    if(r.ok){
+      projectMsg.className = 'msg ok'; projectMsg.textContent = 'Saved.';
+      document.getElementById('cancelProjectEdit').click();
+      loadProjects();
+    } else {
+      projectMsg.className = 'msg error'; projectMsg.textContent = 'Save failed — check password/session.';
+    }
+  });
+
+  async function deleteProject(id){
+    if(!confirm('Delete this project?')) return;
+    await fetch('/api/projects', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json', 'x-admin-password': getPass() },
+      body: JSON.stringify({ id }),
+    });
+    loadProjects();
+  }
+
+  // ---------- POSTS ----------
+  const postList = document.getElementById('postList');
+  const postMsg = document.getElementById('postMsg');
+
+  async function loadPosts(){
+    const r = await fetch('/api/posts');
+    const items = await r.json();
+    if(!items.length){ postList.innerHTML = '<p style="color:var(--muted); font-size:13.5px;">No posts yet.</p>'; return; }
+    postList.innerHTML = items.map(p => `
+      <div class="item-row">
+        <div class="info">
+          <b>${p.title}</b>
+          <span>${p.slug} · ${p.date}</span>
+        </div>
+        <div class="item-actions">
+          <button class="edit" onclick='editPost(${JSON.stringify(p).replace(/'/g,"&apos;")})'>Edit</button>
+          <button class="del" data-slug="${p.slug}">Delete</button>
+        </div>
+      </div>
+    `).join('');
+    postList.querySelectorAll('.del').forEach(btn => {
+      btn.addEventListener('click', () => deletePost(btn.dataset.slug));
+    });
+  }
+
+  function editPost(p){
+    document.getElementById('postFormTitle').textContent = 'Edit Post';
+    document.getElementById('postOriginalSlug').value = p.slug;
+    document.getElementById('postTitle').value = p.title;
+    document.getElementById('postSlug').value = p.slug;
+    document.getElementById('postTag').value = p.tag || '';
+    document.getElementById('postDate').value = p.date;
+    document.getElementById('postExcerpt').value = p.excerpt;
+    document.getElementById('postContent').value = p.content;
+    document.getElementById('cancelPostEdit').style.display = 'inline-flex';
+  }
+
+  document.getElementById('cancelPostEdit').addEventListener('click', () => {
+    document.getElementById('postFormTitle').textContent = 'Add New Post';
+    document.getElementById('postOriginalSlug').value = '';
+    ['postTitle','postSlug','postTag','postDate','postExcerpt','postContent'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('cancelPostEdit').style.display = 'none';
+  });
+
+  document.getElementById('savePostBtn').addEventListener('click', async () => {
+    const originalSlug = document.getElementById('postOriginalSlug').value;
+    const title = document.getElementById('postTitle').value.trim();
+    const slug = document.getElementById('postSlug').value.trim();
+    const tag = document.getElementById('postTag').value.trim();
+    const date = document.getElementById('postDate').value;
+    const excerpt = document.getElementById('postExcerpt').value.trim();
+    const content = document.getElementById('postContent').value.trim();
+
+    if(!title || !slug || !date || !excerpt || !content){
+      postMsg.className = 'msg error'; postMsg.textContent = 'All fields except tag are required.'; return;
+    }
+
+    const payload = { title, slug, tag, date, excerpt, content };
+    const opts = {
+      method: originalSlug ? 'PUT' : 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-admin-password': getPass() },
+      body: JSON.stringify(originalSlug ? { originalSlug, ...payload } : payload),
+    };
+    const r = await fetch('/api/posts', opts);
+    if(r.ok){
+      postMsg.className = 'msg ok'; postMsg.textContent = 'Saved.';
+      document.getElementById('cancelPostEdit').click();
+      loadPosts();
+    } else {
+      const err = await r.json().catch(() => ({}));
+      postMsg.className = 'msg error'; postMsg.textContent = err.error || 'Save failed.';
+    }
+  });
+
+  async function deletePost(slug){
+    if(!confirm('Delete this post?')) return;
+    await fetch('/api/posts', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json', 'x-admin-password': getPass() },
+      body: JSON.stringify({ slug }),
+    });
+    loadPosts();
+  }
+</script>
+
+</body>
+</html>

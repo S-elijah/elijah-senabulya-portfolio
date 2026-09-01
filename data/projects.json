@@ -1,0 +1,66 @@
+[
+  {
+    "type": "open",
+    "badge": "Open Source",
+    "purple": false,
+    "title": "Whale-Connect",
+    "mediaLabel": "Whale-Connect",
+    "description": "The MVP for Whale — an early-stage connect platform, built to validate the core product loop before scaling out the backend.",
+    "meta": "CSS · MVP",
+    "link": "https://github.com/S-elijah/Whale-Connect",
+    "linkText": "View →"
+  },
+  {
+    "type": "open",
+    "badge": "Open Source",
+    "purple": false,
+    "title": "junkit-ug",
+    "mediaLabel": "junkit-ug",
+    "description": "JunkIt UG — spot it, snap it, JunkIt. A Python-based reporting tool for flagging waste and junk locations across Uganda.",
+    "meta": "Python · Civic Tech",
+    "link": "https://github.com/S-elijah/junkit-ug",
+    "linkText": "View →"
+  },
+  {
+    "type": "open",
+    "badge": "Open Source",
+    "purple": false,
+    "title": "Rainfall-Monitor",
+    "mediaLabel": "Rainfall-Monitor",
+    "description": "A desktop Python/Tkinter application that tracks 30 days of rainfall data, classifying conditions as drought, normal, or wet.",
+    "meta": "Python · Tkinter",
+    "link": "https://github.com/S-elijah/Rainfall-Monitor",
+    "linkText": "View →"
+  },
+  {
+    "type": "open",
+    "badge": "Open Source",
+    "purple": false,
+    "title": "mwoyaguesthouse",
+    "mediaLabel": "mwoyaguesthouse",
+    "description": "A working, deployed website built for Mwoya Guest House — full booking-facing site handed off and live for the client.",
+    "meta": "HTML · CSS",
+    "link": "https://github.com/S-elijah/mwoyaguesthouse",
+    "linkText": "View →"
+  },
+  {
+    "type": "client",
+    "badge": "Client Work",
+    "purple": true,
+    "title": "Mwoya Guest House / Oak & Ember",
+    "mediaLabel": "Oak & Ember",
+    "description": "Guest house website plus a multi-sheet sales-tracking workbook built for the bar side of the business, alongside marketing assets.",
+    "meta": "Web & Tooling",
+    "meta2": "2025–26"
+  },
+  {
+    "type": "client",
+    "badge": "Client Work",
+    "purple": true,
+    "title": "Nigel Tech Solutions",
+    "mediaLabel": "Nigel Tech Solutions",
+    "description": "My own technology services venture — brand identity, web development, and a Legal Tech Division serving small business and legal-sector clients.",
+    "meta": "Founder",
+    "meta2": "Ongoing"
+  }
+]

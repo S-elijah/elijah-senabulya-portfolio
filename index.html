@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elijah Senabulya — Software Engineer</title>
+<meta name="description" content="Elijah Senabulya (S-elijah) — Software Engineer building legal tech, data protection, and full-stack products in Kampala, Uganda.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0E1B38;
+    --navy-2:#16264A;
+    --sky:#2F9FE8;
+    --sky-bright:#56B8FF;
+    --purple:#6C4FC7;
+    --ink:#131B2C;
+    --muted:#68707E;
+    --border:#E6E8EC;
+    --bg:#FFFFFF;
+    --bg-soft:#F5F7FA;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+  h1,h2,h3{font-weight:800; letter-spacing:-0.01em; color:var(--ink);}
+  ::selection{background:var(--sky); color:#fff;}
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:#fff; border-bottom:1px solid var(--border);
+  }
+  nav.wrap{display:flex; align-items:center; justify-content:space-between; height:76px;}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:800; font-size:16px;}
+  .brand img{width:36px; height:36px; border-radius:50%; object-fit:cover; border:2px solid var(--sky);}
+  .navlinks{display:flex; gap:30px; font-size:14.5px; font-weight:600;}
+  .navlinks a{color:var(--muted); transition:color .2s;}
+  .navlinks a:hover{color:var(--sky);}
+  .nav-cta{
+    background:var(--navy); color:#fff; padding:10px 20px; border-radius:999px;
+    font-size:13.5px; font-weight:700;
+  }
+  .navtoggle{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer;}
+  .navtoggle span{width:22px; height:2px; background:var(--ink);}
+
+  /* HERO */
+  .hero{position:relative; overflow:hidden;}
+  .hero-banner{
+    position:relative; min-height:560px; display:flex; align-items:center;
+    background-image:
+      linear-gradient(100deg, rgba(14,27,56,0.92) 10%, rgba(14,27,56,0.62) 45%, rgba(14,27,56,0.25) 80%),
+      url('images/banner.jpg');
+    background-size:cover; background-position:center;
+  }
+  .hero-inner{padding:96px 0 120px; position:relative; z-index:1;}
+  .pill{
+    display:inline-flex; align-items:center; gap:8px;
+    border:1px solid rgba(86,184,255,0.5); background:rgba(47,159,232,0.12);
+    color:var(--sky-bright); font-size:12.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    padding:8px 16px; border-radius:999px; margin-bottom:24px;
+  }
+  .pill::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--sky-bright);}
+  .hero h1{
+    font-size:clamp(38px, 6vw, 62px); line-height:1.06; color:#fff; max-width:680px;
+  }
+  .hero h1 span{color:var(--sky-bright);}
+  .hero p.lede{max-width:520px; margin-top:20px; font-size:16.5px; color:#C9D2E3; font-weight:500;}
+  .hero-actions{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--sky); color:#fff; padding:14px 28px; border-radius:999px;
+    font-weight:700; font-size:14.5px; transition:background .2s, transform .2s;
+  }
+  .btn-primary:hover{background:var(--sky-bright); transform:translateY(-1px);}
+  .btn-outline{
+    border:1.5px solid rgba(255,255,255,0.35); color:#fff; padding:14px 28px; border-radius:999px;
+    font-weight:700; font-size:14.5px; transition:border-color .2s, background .2s;
+  }
+  .btn-outline:hover{border-color:#fff; background:rgba(255,255,255,0.08);}
+
+  .hero-swoosh{
+    position:absolute; bottom:-2px; left:0; width:100%; line-height:0; z-index:2;
+  }
+  .hero-swoosh svg{width:100%; height:70px; display:block;}
+
+  /* STATS */
+  .stats{background:var(--bg); padding:52px 0 20px;}
+  .stats-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; text-align:center;}
+  .stat b{display:block; font-size:clamp(30px,4vw,42px); color:var(--navy); font-weight:800;}
+  .stat span{font-size:13px; color:var(--muted); font-weight:600;}
+
+  /* SECTION SHELL */
+  section{padding:80px 0;}
+  section.alt{background:var(--bg-soft);}
+  .eyebrow{
+    font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--sky);
+    margin-bottom:10px;
+  }
+  section h2{font-size:clamp(26px,3.4vw,36px);}
+  .section-intro{max-width:580px; color:var(--muted); margin-top:12px; font-size:15px; font-weight:500;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; margin-bottom:40px;}
+
+  .reveal{opacity:0; transform:translateY(20px); transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:48px; align-items:start;}
+  .about-grid p{color:var(--muted); margin-bottom:16px; font-size:15.5px; font-weight:500;}
+  .about-grid p b{color:var(--ink); font-weight:700;}
+  .fact-card{background:#fff; border:1px solid var(--border); border-radius:16px; padding:24px;}
+  .fact-card ul{list-style:none;}
+  .fact-card li{display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--border); font-size:14px;}
+  .fact-card li:last-child{border-bottom:none;}
+  .fact-card li b{color:var(--ink); font-weight:700;}
+  .fact-card li span{color:var(--muted); font-weight:600; text-align:right;}
+
+  /* STACK CHIPS */
+  .chip-groups{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .chip-group h3{font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--navy); margin-bottom:14px; font-weight:800;}
+  .chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    background:#fff; border:1px solid var(--border); padding:8px 14px; border-radius:999px;
+    font-size:13px; font-weight:600; color:var(--ink);
+  }
+
+  /* FILTER TABS */
+  .tabs{display:inline-flex; background:var(--bg-soft); border-radius:999px; padding:5px; gap:4px; margin-top:8px;}
+  .tab{
+    border:none; background:none; padding:10px 20px; border-radius:999px;
+    font-size:13.5px; font-weight:700; color:var(--muted); cursor:pointer; transition:all .2s;
+  }
+  .tab.active{background:#fff; color:var(--ink); box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+
+  /* PROJECT / CARD GRID */
+  .card-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px; margin-top:32px;}
+  .card{
+    background:#fff; border:1px solid var(--border); border-radius:18px; overflow:hidden;
+    transition:transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s;
+    display:flex; flex-direction:column;
+  }
+  .card:hover{transform:translateY(-4px); box-shadow:0 16px 32px rgba(14,27,56,0.1);}
+  .card-media{
+    position:relative; height:150px;
+    background:linear-gradient(135deg, var(--navy), var(--sky));
+    display:flex; align-items:center; justify-content:center;
+    font-size:15px; font-weight:800; color:rgba(255,255,255,0.9); letter-spacing:.02em; text-align:center; padding:0 20px;
+  }
+  .card-media.purple{background:linear-gradient(135deg, #3A2B66, var(--purple));}
+  .badge{
+    position:absolute; top:14px; left:14px;
+    padding:6px 12px; border-radius:8px; font-size:10.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+    background:var(--sky); color:#fff;
+  }
+  .badge.client{background:var(--purple);}
+  .card-body{padding:22px; display:flex; flex-direction:column; flex:1;}
+  .card-body h3{font-size:17px; margin-bottom:8px;}
+  .card-body p{color:var(--muted); font-size:13.8px; font-weight:500; flex:1;}
+  .card-foot{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:18px; padding-top:16px; border-top:1px solid var(--border);
+  }
+  .card-foot .meta{font-size:12px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.04em;}
+  .card-foot .go{font-size:13px; font-weight:700; color:var(--sky); display:inline-flex; align-items:center; gap:5px;}
+  .card-foot .go:hover{color:var(--sky-bright);}
+
+  /* BEYOND */
+  .beyond-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px; margin-top:32px;}
+  .beyond-card{background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px;}
+  .beyond-card .tag{
+    display:inline-block; background:var(--bg-soft); color:var(--navy); font-size:11px; font-weight:800;
+    letter-spacing:.06em; text-transform:uppercase; padding:6px 12px; border-radius:8px; margin-bottom:14px;
+  }
+  .beyond-card h3{font-size:18px; margin-bottom:8px;}
+  .beyond-card p{color:var(--muted); font-size:13.8px; font-weight:500;}
+  .beyond-card a.lnk{display:inline-block; margin-top:14px; font-size:13px; font-weight:700; color:var(--sky);}
+
+  /* BLOG */
+  .blog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:32px;}
+  .blog-card{background:#fff; border:1px solid var(--border); border-radius:18px; padding:24px; display:flex; flex-direction:column; transition:transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s;}
+  .blog-card:hover{transform:translateY(-4px); box-shadow:0 16px 32px rgba(14,27,56,0.1);}
+  .blog-card .blog-meta{display:flex; align-items:center; gap:10px; margin-bottom:12px;}
+  .blog-card .blog-tag{background:var(--bg-soft); color:var(--navy); font-size:10.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; padding:5px 10px; border-radius:8px;}
+  .blog-card .blog-date{font-size:12px; color:var(--muted); font-weight:600;}
+  .blog-card h3{font-size:17px; margin-bottom:8px;}
+  .blog-card p{color:var(--muted); font-size:13.8px; font-weight:500; flex:1;}
+  .blog-card a.read{margin-top:16px; font-size:13px; font-weight:700; color:var(--sky); display:inline-flex; align-items:center; gap:5px;}
+  .blog-card a.read:hover{color:var(--sky-bright);}
+
+  /* FOOTER */
+  .foot-stripe{height:5px; background:linear-gradient(90deg, #F5A623, var(--sky));}
+  footer{background:var(--navy); color:#C9D2E3; padding:64px 0 28px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; padding-bottom:44px; border-bottom:1px solid rgba(255,255,255,0.1);}
+  .foot-brand{display:flex; align-items:center; gap:10px; font-weight:800; color:#fff; font-size:17px; margin-bottom:14px;}
+  .foot-brand img{width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid var(--sky);}
+  .foot-tag{color:var(--sky-bright); font-size:14.5px; font-weight:700; margin-bottom:10px;}
+  .foot-desc{font-size:13.8px; color:#9FAAC2; max-width:320px; margin-bottom:20px; font-weight:500;}
+  .social-row{display:flex; gap:10px;}
+  .social-row a{
+    width:38px; height:38px; border-radius:10px; background:rgba(255,255,255,0.06);
+    display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; color:#fff;
+    transition:background .2s;
+  }
+  .social-row a:hover{background:var(--sky);}
+  .foot-col h4{font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:#fff; margin-bottom:18px; font-weight:800;}
+  .foot-col ul{list-style:none;}
+  .foot-col li{margin-bottom:12px; font-size:14px; font-weight:500;}
+  .foot-col a{color:#9FAAC2; transition:color .2s;}
+  .foot-col a:hover{color:var(--sky-bright);}
+  .foot-contact li{display:flex; align-items:flex-start; gap:10px; font-size:13.8px;}
+  .foot-msg{
+    display:inline-flex; align-items:center; gap:8px; margin-top:8px;
+    border:1.5px solid rgba(86,184,255,0.5); color:var(--sky-bright); padding:10px 20px; border-radius:999px;
+    font-size:13px; font-weight:700;
+  }
+  .foot-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:24px; font-size:12.5px; color:#7C88A3;}
+  .foot-bottom a{color:#7C88A3;}
+
+  @media(max-width:900px){
+    .about-grid, .chip-groups, .card-grid, .beyond-grid, .blog-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr; gap:32px;}
+    .stats-grid{grid-template-columns:1fr; gap:32px;}
+    .navlinks{
+      position:absolute; top:76px; left:0; right:0; background:#fff;
+      flex-direction:column; padding:20px 24px; gap:16px; border-bottom:1px solid var(--border);
+      display:none;
+    }
+    .navlinks.open{display:flex;}
+    .navtoggle{display:flex;}
+    .nav-cta{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important;}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand"><img src="images/headshot.jpg" alt="Elijah Senabulya">Elijah Senabulya</div>
+    <div class="navlinks" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#stack">Stack</a>
+      <a href="#work">Work</a>
+      <a href="#beyond">Beyond Code</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+    <button class="navtoggle" id="navtoggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-banner">
+    <div class="wrap hero-inner">
+      <div class="pill">Software Engineer · Kampala, UG</div>
+      <h1>Building <span>legal tech</span> and full stack products that work.</h1>
+      <p class="lede">I'm Elijah a software engineering student at Victoria University Kampala and founder of Nigel Tech Solutions, focused on data protection, backend systems, and contract automation.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-swoosh">
+      <svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,70 C360,0 1080,0 1440,70 L1440,70 L0,70 Z" fill="#ffffff"/></svg>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat"><b>4+</b><span>Open-Source Projects</span></div>
+    <div class="stat"><b>3+</b><span>Client Engagements Delivered</span></div>
+    <div class="stat"><b>2029</b><span>Expected Graduation</span></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap reveal">
+    <div class="eyebrow">About</div>
+    <h2>Where law meets code</h2>
+    <div class="about-grid" style="margin-top:32px;">
+      <div>
+        <p>Uganda's legal sector runs on paper, and paper is slow to search, easy to lose, and hard to secure. I build the software that closes that gap <b>data-protection tooling and contract automation</b> that make legal work faster and safer.</p>
+        <p>I'm in my second year of a BSc in Software Engineering, running a parallel track as a freelance developer and the founder of <b>Nigel Tech Solutions</b>. Outside legal tech, I take on full-stack builds for small businesses because shipping real products for real clients is the fastest way to get better at all of it.</p>
+        <p>Long-term, I'm building toward defense adjacent and systems level engineering  the kind of work where correctness and security aren't optional.</p>
+      </div>
+      <div class="fact-card">
+        <ul>
+          <li><b>Role</b><span>Software Engineer</span></li>
+          <li><b>Institution</b><span>Victoria University Kampala</span></li>
+          <li><b>Venture</b><span>Founder, Nigel Tech Solutions</span></li>
+          <li><b>Interests</b><span>Chess, Philosophy</span></li>
+          <li><b>Setup</b><span>Linux Mint & VSCodium</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack" class="alt">
+  <div class="wrap reveal">
+    <div class="eyebrow">Stack</div>
+    <h2>Tools I build with</h2>
+    <p class="section-intro">Languages and frameworks in active use, with security and legal domain tooling layered on top.</p>
+    <div class="chip-groups" style="margin-top:36px;">
+      <div class="chip-group">
+        <h3>Languages</h3>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">Java</span>
+          <span class="chip">SQL</span><span class="chip">HTML &amp; CSS</span>
+        </div>
+      </div>
+      <div class="chip-group">
+        <h3>Frameworks &amp; Tools</h3>
+        <div class="chips">
+          <span class="chip">Django</span><span class="chip">Flask</span><span class="chip">React</span>
+          <span class="chip">Docker</span><span class="chip">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="chip-group">
+        <h3>Security &amp; Domain</h3>
+        <div class="chips">
+          <span class="chip">Data Encryption</span><span class="chip">UG Data Protection Act</span>
+          <span class="chip">Secure APIs</span><span class="chip">Document Automation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Work</div>
+        <h2>Projects &amp; Engagements</h2>
+        <p class="section-intro">Open repositories and production work for clients filter by type below.</p>
+      </div>
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-filter="all">All</button>
+        <button class="tab" data-filter="open">Open Source</button>
+        <button class="tab" data-filter="client">Client Work</button>
+      </div>
+    </div>
+
+    <div class="card-grid" id="cardGrid">
+      <p style="color:var(--muted); font-size:14px;">Loading projects…</p>
+    </div>
+    <p style="margin-top:28px; font-size:13px; color:var(--muted); font-weight:600;">
+      Full docket: <a href="https://github.com/S-elijah?tab=repositories" target="_blank" rel="noopener" style="color:var(--sky); font-weight:700;">github.com/S-elijah</a>
+    </p>
+  </div>
+</section>
+
+<section id="beyond" class="alt">
+  <div class="wrap reveal">
+    <div class="eyebrow">Beyond Code</div>
+    <h2>Off the clock</h2>
+    <div class="beyond-grid">
+      <div class="beyond-card">
+        <span class="tag">Content</span>
+        <h3>Legal Tech Uganda</h3>
+        <p>Short form breakdowns of legal tech in Africa quick explainers on TikTok, and a longerform LinkedIn newsletter.</p>
+        <a class="lnk" href="https://www.tiktok.com/@elijah.legaltech" target="_blank" rel="noopener">@elijah.legaltech on TikTok →</a>
+      </div>
+      <div class="beyond-card">
+        <span class="tag">Chess</span>
+        <h3>Tactics &amp; Openings</h3>
+        <p>Chess sharpens the same muscle as debugging: reading three moves ahead, and knowing when a position has already been lost.</p>
+      </div>
+      <div class="beyond-card">
+        <span class="tag">Philosophy</span>
+        <h3>Law, Logic &amp; Ethics</h3>
+        <p>An ongoing interest in the philosophy of law where it informs how I think about data protection and consent in software.</p>
+      </div>
+      <div class="beyond-card">
+        <span class="tag">Writing</span>
+        <h3>Echoes of a Fractured Reign</h3>
+        <p>A debut poetry collection, published under the name Senabulya Elijah  a second book currently in progress.</p>
+        <a class="lnk" href="https://amzn.in/d/0bCl140C" target="_blank" rel="noopener">Find it on Amazon →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="wrap reveal">
+    <div class="eyebrow">Blog</div>
+    <h2>Writing &amp; Notes</h2>
+    <p class="section-intro">Thoughts on legal tech, building in public, and whatever else is on my mind.</p>
+    <div class="blog-grid" id="blogGrid">
+      <p style="color:var(--muted); font-size:14px;">Loading posts…</p>
+    </div>
+  </div>
+</section>
+
+<div class="foot-stripe"></div>
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><img src="images/headshot.jpg" alt="Elijah Senabulya">Elijah Senabulya</div>
+        <div class="foot-tag">"Building the case for trusted legal tech."</div>
+        <p class="foot-desc">Software Engineer in Kampala, Uganda  open to legal & business tech collaborations, freelance builds, and interesting problems.</p>
+        <div class="social-row">
+          <a href="https://github.com/S-elijah" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+          <a href="https://x.com/KSenabulyaE" target="_blank" rel="noopener" aria-label="X">X</a>
+          <a href="https://www.linkedin.com/in/elijah-senabulya-72ba35324" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a href="https://www.tiktok.com/@elijah.legaltech" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#stack">Stack</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#beyond">Beyond Code</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Get in Touch</h4>
+        <ul class="foot-contact">
+          <li>M<a href="mailto:senabulyaelijahk@gmail.com">senabulyaelijahk@gmail.com</a></li>
+          <li> Kampala, Uganda</li>
+          <li>🔗 <a href="https://orcid.org/0009-0006-1734-8515" target="_blank" rel="noopener">ORCID</a></li>
+        </ul>
+        <a href="mailto:senabulyaelijahk@gmail.com" class="foot-msg">✉ Send Me a Message</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Elijah Senabulya. All rights reserved.</span>
+      <span>Kampala, Uganda</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navtoggle');
+  const links = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // ---- PROJECTS: fetch from data/projects.json and render ----
+  const cardGrid = document.getElementById('cardGrid');
+  let allProjects = [];
+
+  function renderProjects(list){
+    if(!list.length){
+      cardGrid.innerHTML = '<p style="color:var(--muted); font-size:14px;">No projects yet.</p>';
+      return;
+    }
+    cardGrid.innerHTML = list.map(p => `
+      <div class="card" data-type="${p.type}">
+        <div class="card-media${p.purple ? ' purple' : ''}"><span class="badge${p.purple ? ' client' : ''}">${p.badge}</span>${p.mediaLabel}</div>
+        <div class="card-body">
+          <h3>${p.title}</h3>
+          <p>${p.description}</p>
+          <div class="card-foot">
+            <span class="meta">${p.meta || ''}</span>
+            ${p.link ? `<a class="go" href="${p.link}" target="_blank" rel="noopener">${p.linkText || 'View →'}</a>` : `<span class="meta">${p.meta2 || ''}</span>`}
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  fetch('/api/projects')
+    .then(r => r.json())
+    .then(data => { allProjects = data; renderProjects(allProjects); })
+    .catch(() => { cardGrid.innerHTML = '<p style="color:var(--muted); font-size:14px;">Could not load projects.</p>'; });
+
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      const filtered = filter === 'all' ? allProjects : allProjects.filter(p => p.type === filter);
+      renderProjects(filtered);
+    });
+  });
+
+  // ---- BLOG: fetch from data/posts.json and render ----
+  const blogGrid = document.getElementById('blogGrid');
+  fetch('/api/posts')
+    .then(r => r.json())
+    .then(posts => {
+      if(!posts.length){
+        blogGrid.innerHTML = '<p style="color:var(--muted); font-size:14px;">No posts yet — check back soon.</p>';
+        return;
+      }
+      posts.sort((a,b) => new Date(b.date) - new Date(a.date));
+      blogGrid.innerHTML = posts.map(p => `
+        <div class="blog-card">
+          <div class="blog-meta">
+            <span class="blog-tag">${p.tag || 'Post'}</span>
+            <span class="blog-date">${new Date(p.date).toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'})}</span>
+          </div>
+          <h3>${p.title}</h3>
+          <p>${p.excerpt}</p>
+          <a class="read" href="post.html?slug=${encodeURIComponent(p.slug)}">Read Post →</a>
+        </div>
+      `).join('');
+    })
+    .catch(() => { blogGrid.innerHTML = '<p style="color:var(--muted); font-size:14px;">Could not load posts.</p>'; });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

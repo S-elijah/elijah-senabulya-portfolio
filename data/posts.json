@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "welcome-to-the-blog",
+    "title": "Welcome to the Blog",
+    "date": "2026-08-28",
+    "tag": "Notes",
+    "excerpt": "This is the first post on the blog — a placeholder showing how new posts get added. Replace this with your own writing any time.",
+    "content": "This is the first post on the blog.\n\nTo add a new post, open data/posts.json and add a new object to the array at the top, with a unique \"slug\", a \"title\", a \"date\", a short \"excerpt\" for the card preview, and the full \"content\" of the post. Paragraphs in \"content\" are separated by a blank line, just like this file.\n\nNo rebuild step is needed — the page reads this file directly, so saving the JSON and redeploying is all it takes."
+  }
+]

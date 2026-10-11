@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elijah Senabulya : Junior Software Engineer</title>
-<meta name="description" content="Elijah Senabulya  Junior Software Engineer building mobile and web products with Flutter, DBMS, and UML-based system design in Kampala, Uganda. Open to internships.">
+<title>Elijah Senabulya : Junior Network &amp; Digital Forensics Engineer</title>
+<meta name="description" content="Elijah Senabulya, Junior Network and Digital Forensics Engineer in Kampala, Uganda. Networking, DFIR and legal tech on Linux with Cisco Packet Tracer and Wireshark. Open to internships.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -55,15 +55,15 @@
   .navtoggle span{width:22px; height:2px; background:var(--ink);}
 
   /* HERO */
-  .hero{position:relative; overflow:hidden;}
+  .hero{position:relative; overflow:hidden; padding:0;}
   .hero-banner{
     position:relative; min-height:560px; display:flex; align-items:center;
     background-image:
       linear-gradient(100deg, rgba(14,27,56,0.92) 10%, rgba(14,27,56,0.62) 45%, rgba(14,27,56,0.25) 80%),
-      url('images/banner.jpg');
-    background-size:cover; background-position:center;
+      url('images/hero.jpg');
+    background-size:cover; background-position:60% center;
   }
-  .hero-inner{padding:96px 0 120px; position:relative; z-index:1;}
+  .hero-inner{padding:96px 24px 120px; position:relative; z-index:1; width:100%;}
   .pill{
     display:inline-flex; align-items:center; gap:8px;
     border:1px solid rgba(86,184,255,0.5); background:rgba(47,159,232,0.12);
@@ -134,46 +134,6 @@
     font-size:13px; font-weight:600; color:var(--ink);
   }
 
-  /* FILTER TABS */
-  .tabs{display:inline-flex; background:var(--bg-soft); border-radius:999px; padding:5px; gap:4px; margin-top:8px;}
-  .tab{
-    border:none; background:none; padding:10px 20px; border-radius:999px;
-    font-size:13.5px; font-weight:700; color:var(--muted); cursor:pointer; transition:all .2s;
-  }
-  .tab.active{background:#fff; color:var(--ink); box-shadow:0 1px 4px rgba(0,0,0,0.08);}
-
-  /* PROJECT / CARD GRID */
-  .card-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px; margin-top:32px;}
-  .card{
-    background:#fff; border:1px solid var(--border); border-radius:18px; overflow:hidden;
-    transition:transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s;
-    display:flex; flex-direction:column;
-  }
-  .card:hover{transform:translateY(-4px); box-shadow:0 16px 32px rgba(14,27,56,0.1);}
-  .card-media{
-    position:relative; height:150px;
-    background:linear-gradient(135deg, var(--navy), var(--sky));
-    display:flex; align-items:center; justify-content:center;
-    font-size:15px; font-weight:800; color:rgba(255,255,255,0.9); letter-spacing:.02em; text-align:center; padding:0 20px;
-  }
-  .card-media.purple{background:linear-gradient(135deg, #3A2B66, var(--purple));}
-  .badge{
-    position:absolute; top:14px; left:14px;
-    padding:6px 12px; border-radius:8px; font-size:10.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
-    background:var(--sky); color:#fff;
-  }
-  .badge.client{background:var(--purple);}
-  .card-body{padding:22px; display:flex; flex-direction:column; flex:1;}
-  .card-body h3{font-size:17px; margin-bottom:8px;}
-  .card-body p{color:var(--muted); font-size:13.8px; font-weight:500; flex:1;}
-  .card-foot{
-    display:flex; justify-content:space-between; align-items:center;
-    margin-top:18px; padding-top:16px; border-top:1px solid var(--border);
-  }
-  .card-foot .meta{font-size:12px; color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.04em;}
-  .card-foot .go{font-size:13px; font-weight:700; color:var(--sky); display:inline-flex; align-items:center; gap:5px;}
-  .card-foot .go:hover{color:var(--sky-bright);}
-
   /* BEYOND */
   .beyond-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px; margin-top:32px;}
   .beyond-card{background:#fff; border:1px solid var(--border); border-radius:18px; padding:26px;}
@@ -184,18 +144,6 @@
   .beyond-card h3{font-size:18px; margin-bottom:8px;}
   .beyond-card p{color:var(--muted); font-size:13.8px; font-weight:500;}
   .beyond-card a.lnk{display:inline-block; margin-top:14px; font-size:13px; font-weight:700; color:var(--sky);}
-
-  /* BLOG */
-  .blog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:32px;}
-  .blog-card{background:#fff; border:1px solid var(--border); border-radius:18px; padding:24px; display:flex; flex-direction:column; transition:transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s;}
-  .blog-card:hover{transform:translateY(-4px); box-shadow:0 16px 32px rgba(14,27,56,0.1);}
-  .blog-card .blog-meta{display:flex; align-items:center; gap:10px; margin-bottom:12px;}
-  .blog-card .blog-tag{background:var(--bg-soft); color:var(--navy); font-size:10.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; padding:5px 10px; border-radius:8px;}
-  .blog-card .blog-date{font-size:12px; color:var(--muted); font-weight:600;}
-  .blog-card h3{font-size:17px; margin-bottom:8px;}
-  .blog-card p{color:var(--muted); font-size:13.8px; font-weight:500; flex:1;}
-  .blog-card a.read{margin-top:16px; font-size:13px; font-weight:700; color:var(--sky); display:inline-flex; align-items:center; gap:5px;}
-  .blog-card a.read:hover{color:var(--sky-bright);}
 
   /* FOOTER */
   .foot-stripe{height:5px; background:linear-gradient(90deg, #F5A623, var(--sky));}
@@ -227,7 +175,7 @@
   .foot-bottom a{color:#7C88A3;}
 
   @media(max-width:900px){
-    .about-grid, .chip-groups, .card-grid, .beyond-grid, .blog-grid{grid-template-columns:1fr;}
+    .about-grid, .chip-groups, .beyond-grid{grid-template-columns:1fr;}
     .foot-grid{grid-template-columns:1fr; gap:32px;}
     .stats-grid{grid-template-columns:1fr; gap:32px;}
     .navlinks{
@@ -250,9 +198,8 @@
     <div class="navlinks" id="navlinks">
       <a href="#about">About</a>
       <a href="#stack">Stack</a>
-      <a href="#work">Work</a>
+      <a href="#work">Projects</a>
       <a href="#beyond">Beyond Code</a>
-      <a href="#blog">Blog</a>
       <a href="#contact">Contact</a>
     </div>
     <a href="#contact" class="nav-cta">Get in Touch</a>
@@ -263,11 +210,11 @@
 <section class="hero">
   <div class="hero-banner">
     <div class="wrap hero-inner">
-      <div class="pill">Junior Software Engineer · Kampala, UG</div>
-      <h1>Building <span>mobile and web</span> products, from concept to database.</h1>
-      <p class="lede">I'm Elijah — a Software Engineering student at Victoria University Kampala, working with Flutter, web fundamentals, and database-driven design to turn requirements into working systems. Open to internships and junior developer roles.</p>
+      <div class="pill">Network &amp; Digital Forensics Engineer · Kampala, UG</div>
+      <h1>Networks, and the <span>digital evidence</span> they leave behind.</h1>
+      <p class="lede">I'm Elijah, a Software Engineering student at Victoria University Kampala focused on networking and digital forensics (DFIR): how data moves across a network, and how to find, preserve and analyse the evidence it leaves behind. Open to internships and junior roles.</p>
       <div class="hero-actions">
-        <a href="#work" class="btn-primary">View My Work</a>
+        <a href="#work" class="btn-primary">View My Projects</a>
         <a href="#contact" class="btn-outline">Get in Touch</a>
       </div>
     </div>
@@ -288,21 +235,21 @@
 <section id="about">
   <div class="wrap reveal">
     <div class="eyebrow">About</div>
-    <h2>From concept to database</h2>
+    <h2>From packets to evidence</h2>
     <div class="about-grid" style="margin-top:32px;">
       <div>
-        <p>I'm a Software Engineering student at Victoria University Kampala, building toward a career as a <b>Junior Software Engineer</b> with a focus on mobile and web systems.</p>
-        <p>My core stack is <b>Flutter</b> for cross-platform mobile, <b>HTML and CSS</b> for responsive web, and solid fundamentals in <b>Database Management Systems</b> and <b>UML-based system design</b>. I like taking a messy set of requirements, mapping it into a clear UML diagram, and then building the working product on top of that.</p>
-        <p>On the side, I run <b>Nigel Tech Solutions</b> and I'm a member of the <b>Patriotic League of Uganda</b> (PC-18158). Right now I'm building projects to sharpen full-cycle development  design, database, build, ship and I'm open to internships, junior roles, and collaborations in Flutter, frontend, or systems design.</p>
+        <p>I'm a Software Engineering student at Victoria University Kampala, building toward a career as a <b>Junior Network &amp; Digital Forensics Engineer</b>.</p>
+        <p>My focus is <b>networking</b> and <b>digital forensics (DFIR)</b>. I work on <b>Linux</b>, build and test networks in <b>Cisco Packet Tracer</b>, and use <b>Wireshark</b> to analyse traffic, with <b>Python</b> and <b>database</b> fundamentals for scripting and handling data. The software engineering degree is the foundation underneath.</p>
+        <p>I'm also interested in how this applies to law and legal systems in Uganda, and I write about it in my <b>Legal Tech Uganda</b> newsletter and short TikTok explainers. On the side, I run <b>Nigel Tech Solutions</b> and I'm a member of the <b>Patriotic League of Uganda</b> (PC-18158). I'm open to internships, junior roles, and collaborations in networking, digital forensics, and legal tech.</p>
       </div>
       <div class="fact-card">
         <ul>
-          <li><b>Role</b><span>Junior Software Engineer</span></li>
+          <li><b>Role</b><span>Junior Network &amp; Digital Forensics Engineer</span></li>
           <li><b>Institution</b><span>Victoria University Kampala</span></li>
           <li><b>Venture</b><span>Founder, Nigel Tech Solutions</span></li>
           <li><b>Membership</b><span>Patriotic League of Uganda, PC-18158</span></li>
           <li><b>Affiliations</b><span><a href="https://x.com/VUKampala" target="_blank" rel="noopener">@VUKampala</a> · <a href="https://x.com/PLUsecretariat" target="_blank" rel="noopener">@PLUsecretariat</a></span></li>
-          <li><b>Setup</b><span>Linux Mint & VSCodium</span></li>
+          <li><b>Setup</b><span>Linux Mint, Packet Tracer &amp; Wireshark</span></li>
         </ul>
       </div>
     </div>
@@ -312,28 +259,25 @@
 <section id="stack" class="alt">
   <div class="wrap reveal">
     <div class="eyebrow">Stack</div>
-    <h2>Tools I build with</h2>
-    <p class="section-intro">Languages and frameworks in active use, with database and system-design fundamentals underneath everything.</p>
+    <h2>Tools I work with</h2>
+    <p class="section-intro">The tools I use for network design, packet analysis and scripting, on Linux.</p>
     <div class="chip-groups" style="margin-top:36px;">
       <div class="chip-group">
-        <h3>Languages</h3>
+        <h3>Networking</h3>
         <div class="chips">
-          <span class="chip">Dart</span><span class="chip">JavaScript</span><span class="chip">Java</span>
-          <span class="chip">SQL</span><span class="chip">HTML &amp; CSS</span>
+          <span class="chip">Cisco Packet Tracer</span><span class="chip">Wireshark</span><span class="chip">Network Design</span>
         </div>
       </div>
       <div class="chip-group">
-        <h3>Frameworks &amp; Tools</h3>
+        <h3>Forensics &amp; Legal Tech</h3>
         <div class="chips">
-          <span class="chip">Flutter</span><span class="chip">Django</span><span class="chip">Flask</span>
-          <span class="chip">React</span><span class="chip">PostgreSQL</span>
+          <span class="chip">Digital Forensics (DFIR)</span><span class="chip">Legal Tech</span>
         </div>
       </div>
       <div class="chip-group">
-        <h3>Systems &amp; Design</h3>
+        <h3>Environment &amp; Scripting</h3>
         <div class="chips">
-          <span class="chip">DBMS</span><span class="chip">UML Diagrams</span><span class="chip">ER Modeling</span>
-          <span class="chip">System Design</span>
+          <span class="chip">Linux Mint (Xfce)</span><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">DBMS</span>
         </div>
       </div>
     </div>
@@ -342,25 +286,10 @@
 
 <section id="work">
   <div class="wrap reveal">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">Work</div>
-        <h2>Projects &amp; Engagements</h2>
-        <p class="section-intro">Open repositories and production work for clients filter by type below.</p>
-      </div>
-      <div class="tabs" id="tabs">
-        <button class="tab active" data-filter="all">All</button>
-        <button class="tab" data-filter="open">Open Source</button>
-        <button class="tab" data-filter="client">Client Work</button>
-      </div>
-    </div>
-
-    <div class="card-grid" id="cardGrid">
-      <p style="color:var(--muted); font-size:14px;">Loading projects…</p>
-    </div>
-    <p style="margin-top:28px; font-size:13px; color:var(--muted); font-weight:600;">
-      Full docket: <a href="https://github.com/S-elijah?tab=repositories" target="_blank" rel="noopener" style="color:var(--sky); font-weight:700;">github.com/S-elijah</a>
-    </p>
+    <div class="eyebrow">Projects</div>
+    <h2>My work lives on GitHub</h2>
+    <p class="section-intro">Everything I build is published in my GitHub repositories.</p>
+    <a href="https://github.com/S-elijah?tab=repositories" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block; margin-top:28px;">View my GitHub</a>
   </div>
 </section>
 
@@ -395,25 +324,14 @@
   </div>
 </section>
 
-<section id="blog">
-  <div class="wrap reveal">
-    <div class="eyebrow">Blog</div>
-    <h2>Writing &amp; Notes</h2>
-    <p class="section-intro">Notes on building mobile and web products, system design, and whatever else is on my mind.</p>
-    <div class="blog-grid" id="blogGrid">
-      <p style="color:var(--muted); font-size:14px;">Loading posts…</p>
-    </div>
-  </div>
-</section>
-
 <div class="foot-stripe"></div>
 <footer id="contact">
   <div class="wrap">
     <div class="foot-grid">
       <div>
         <div class="foot-brand"><img src="images/headshot.jpg" alt="Elijah Senabulya">Elijah Senabulya</div>
-        <div class="foot-tag">"Turning requirements into working systems."</div>
-        <p class="foot-desc">Junior Software Engineer in Kampala, Uganda and  open to internships, junior developer roles, and collaborations in Flutter, frontend, and systems design.</p>
+        <div class="foot-tag">"Building the case for trusted legal and business technology."</div>
+        <p class="foot-desc">Junior Network &amp; Digital Forensics Engineer in Kampala, Uganda, open to internships, junior roles, and collaborations in networking, digital forensics, and legal tech.</p>
         <div class="social-row">
           <a href="https://github.com/S-elijah" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
           <a href="https://x.com/KSenabulyaE" target="_blank" rel="noopener" aria-label="X">X</a>
@@ -426,9 +344,8 @@
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#stack">Stack</a></li>
-          <li><a href="#work">Work</a></li>
+          <li><a href="#work">Projects</a></li>
           <li><a href="#beyond">Beyond Code</a></li>
-          <li><a href="#blog">Blog</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -453,70 +370,6 @@
   const links = document.getElementById('navlinks');
   toggle.addEventListener('click', () => links.classList.toggle('open'));
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-
-  // ---- PROJECTS: fetch from data/projects.json and render ----
-  const cardGrid = document.getElementById('cardGrid');
-  let allProjects = [];
-
-  function renderProjects(list){
-    if(!list.length){
-      cardGrid.innerHTML = '<p style="color:var(--muted); font-size:14px;">No projects yet.</p>';
-      return;
-    }
-    cardGrid.innerHTML = list.map(p => `
-      <div class="card" data-type="${p.type}">
-        <div class="card-media${p.purple ? ' purple' : ''}"><span class="badge${p.purple ? ' client' : ''}">${p.badge}</span>${p.mediaLabel}</div>
-        <div class="card-body">
-          <h3>${p.title}</h3>
-          <p>${p.description}</p>
-          <div class="card-foot">
-            <span class="meta">${p.meta || ''}</span>
-            ${p.link ? `<a class="go" href="${p.link}" target="_blank" rel="noopener">${p.linkText || 'View →'}</a>` : `<span class="meta">${p.meta2 || ''}</span>`}
-          </div>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  fetch('/api/projects')
-    .then(r => r.json())
-    .then(data => { allProjects = data; renderProjects(allProjects); })
-    .catch(() => { cardGrid.innerHTML = '<p style="color:var(--muted); font-size:14px;">Could not load projects.</p>'; });
-
-  const tabs = document.querySelectorAll('.tab');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const filter = tab.dataset.filter;
-      const filtered = filter === 'all' ? allProjects : allProjects.filter(p => p.type === filter);
-      renderProjects(filtered);
-    });
-  });
-
-  // ---- BLOG: fetch from data/posts.json and render ----
-  const blogGrid = document.getElementById('blogGrid');
-  fetch('/api/posts')
-    .then(r => r.json())
-    .then(posts => {
-      if(!posts.length){
-        blogGrid.innerHTML = '<p style="color:var(--muted); font-size:14px;">No posts yet — check back soon.</p>';
-        return;
-      }
-      posts.sort((a,b) => new Date(b.date) - new Date(a.date));
-      blogGrid.innerHTML = posts.map(p => `
-        <div class="blog-card">
-          <div class="blog-meta">
-            <span class="blog-tag">${p.tag || 'Post'}</span>
-            <span class="blog-date">${new Date(p.date).toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'})}</span>
-          </div>
-          <h3>${p.title}</h3>
-          <p>${p.excerpt}</p>
-          <a class="read" href="post.html?slug=${encodeURIComponent(p.slug)}">Read Post →</a>
-        </div>
-      `).join('');
-    })
-    .catch(() => { blogGrid.innerHTML = '<p style="color:var(--muted); font-size:14px;">Could not load posts.</p>'; });
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
